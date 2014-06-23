@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Test deck</title>
+  <title>MPG Prediction</title>
   <meta charset="utf-8">
-  <meta name="description" content="Test deck">
-  <meta name="author" content="">
+  <meta name="description" content="MPG Prediction">
+  <meta name="author" content="A random Coursera Student">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -32,9 +32,9 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Test deck</h1>
-    <h2></h2>
-    <p><br/></p>
+    <h1>MPG Prediction</h1>
+    <h2>Dumb linear model mpg ~ cyl + wt (just for creating a funny Shiny App !)</h2>
+    <p>A random Coursera Student<br/>Lifelong Learner</p>
   </hgroup>
   <article></article>  
 </slide>
@@ -43,14 +43,18 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Read-And-Delete</h2>
+    <h2>Available Data</h2>
   </hgroup>
   <article data-timings="">
-    <ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
-</ol>
+    <p>The mtcars dataset is one among the datasets packages. It is the one used in the Regression Models Project and thus I decided to continue to use it in the Developing Data Products project.
+<p>
+Basically, we just use the three following features form the mtcars dataset to help us predict MPG according to our dumb lieanr regression model:</p>
+
+<ul>
+<li>wt: weight of the car in thousands of pounds </li>
+<li>cyl: number of cylinders in the car&#39;s engine</li>
+<li>mpg: gas mileage in miles per gallon</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -58,13 +62,68 @@
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Slide 2</h2>
+    <h2>The Model</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">plot(1:10, 1:10)
+    <p>I have created a very simple linear regression model based on the number of cylinders and weight of cars to predict the respective MPG:</p>
+
+<pre><code class="r">model &lt;- lm(mpg ~ wt + cyl, data = mtcars)
+model
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ wt + cyl, data = mtcars)
+## 
+## Coefficients:
+## (Intercept)           wt          cyl  
+##       39.69        -3.19        -1.51
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Results</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">model.summary &lt;- summary(model)
+model.summary[4]  # coefficients
+</code></pre>
+
+<pre><code>## $coefficients
+##             Estimate Std. Error t value  Pr(&gt;|t|)
+## (Intercept)   39.686     1.7150  23.141 3.043e-20
+## wt            -3.191     0.7569  -4.216 2.220e-04
+## cyl           -1.508     0.4147  -3.636 1.064e-03
+</code></pre>
+
+<pre><code class="r">model.summary[8]  # r-squared
+</code></pre>
+
+<pre><code>## $r.squared
+## [1] 0.8302
+</code></pre>
+
+<p>My model is just a dumb one and pretty much false... but it&#39;s it is just designed to be a funny demonstration of some Shiny Application features.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="d" style="background:;">
+  <hgroup>
+    <h2>Testing on shinyapps.io</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Here&#39;s a link to the interactive web version of this Shiny App:<br>
+<a href="http://thien-tam.shinyapps.io/developing-data-products-project">http://thien-tam.shinyapps.io/developing-data-products-project</a></p>
+
+<p>The user may choose the number of cylinders and weight of his dream car to get a prediction of the corresponding MPG.</p>
+
+<p>NB: It seems I just cannot deploy on shinyapps.io... You can still copy both server.R and ui.R and run the app on your own computer to see it work. Enjoy ! ;-)</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -76,14 +135,26 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Read-And-Delete'>
+        data-slide=1 title='Available Data'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Slide 2'>
+        data-slide=2 title='The Model'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Results'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Testing on shinyapps.io'>
+         4
       </a>
     </li>
   </ul>
