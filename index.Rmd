@@ -36,19 +36,21 @@ model
 
 ```{r}
 model.summary <- summary(model)
-model.summary[4]  # coefficients
-model.summary[8]  # r-squared
+model.summary[4]
+model.summary[8]
 ```
 
 My model is just a dumb one and pretty much false... but it's it is just designed to be a funny demonstration of some Shiny Application features.
 
---- .class #d
+--- .class #id
 
 ## Testing on shinyapps.io
 
 Here's a link to the interactive web version of this Shiny App:   
-http://thien-tam.shinyapps.io/developing-data-products-project
+http://thien-tam.shinyapps.io/project
 
 The user may choose the number of cylinders and weight of his dream car to get a prediction of the corresponding MPG.
 
 NB: It seems I just cannot deploy on shinyapps.io... You can still copy both server.R and ui.R and run the app on your own computer to see it work. Enjoy ! ;-)
+
+--- .class #id
