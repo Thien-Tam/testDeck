@@ -82,5 +82,3 @@ http://thien-tam.shinyapps.io/project
 The user may choose the number of cylinders and weight of his dream car to get a prediction of the corresponding MPG.
 
 NB: It seems I just cannot deploy on shinyapps.io... You can still copy both server.R and ui.R and run the app on your own computer to see it work. Enjoy ! ;-)
-
---- .class #id
